@@ -28,10 +28,9 @@ db.username=<db username>
 db.password=<db password>
 db.schemafile=<name of db schema file>
 
-#Additional for custom dataset
-#S3 Object Storage Properties
-s3.AccessKey=<S3 Object storage access key>
-s3.SecretKey=<S3 Object storage secret key>
+#Additional properties 
+#propType.propName=<additional property value>
+
 ````
 
 All datafiles for import, and the schema dump file must be placed (copied) to the directory indicated in __os.inDir__.
