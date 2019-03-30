@@ -76,7 +76,7 @@ public class HPODatabaseUtil implements ISystemUtility {
      * @param databaseName db name
      * @param outFilePath  dump file path
      */
-    void dumpDatabaseToFile(String mysqlHost, String mysqlPort, String mysqlUser, String mysqlUserPW,
+    public void dumpDatabaseToFile(String mysqlHost, String mysqlPort, String mysqlUser, String mysqlUserPW,
                             String databaseName, String outFilePath, String mysqlPath) {
 
         String mysqlDumpCommand = "mysqldump";
@@ -183,7 +183,7 @@ public class HPODatabaseUtil implements ISystemUtility {
      * @param dbSchemaPath location of schema dump file
      * @param mysqlPath absolute path to mySQL executable
      */
-    void insertSchemaIntoDatabase(String mysqlHost, String mysqlPort, String mysqlUser, String mysqlUserPW,
+    public void insertSchemaIntoDatabase(String mysqlHost, String mysqlPort, String mysqlUser, String mysqlUserPW,
                                   String databaseName, String dbSchemaPath, String mysqlPath) {
         dropDB();
         createDB();
@@ -256,7 +256,7 @@ public class HPODatabaseUtil implements ISystemUtility {
 //        return this.mySQLPath;
     }
 
-    String getMySQLPath() {
+    public String getMySQLPath() {
         return this.mySQLPath;
     }
 
@@ -270,7 +270,7 @@ public class HPODatabaseUtil implements ISystemUtility {
      * @param password     login password
      * @param databaseName server instance database name
      */
-    void makeConnection(String hostName, String port, String username, String password, String databaseName) {
+    public void makeConnection(String hostName, String port, String username, String password, String databaseName) {
         registerDriver();
         this.databaseName = databaseName;
         try {
@@ -353,7 +353,7 @@ public class HPODatabaseUtil implements ISystemUtility {
      * @param term         The Term object
      * @param dataProvider Instance of HPODataProvider
      */
-    void insertHpoTerm(Term term, HpoDataProvider dataProvider) {
+    public void insertHpoTerm(Term term, HpoDataProvider dataProvider) {
         /* HP:00000123 --> 123 */
         int termId = term.getID().id;
         /* true for obsolete terms */
@@ -658,7 +658,7 @@ public class HPODatabaseUtil implements ISystemUtility {
 
     }
 
-    void insertAllPaths(HashSet<GraphPath> allPaths) {
+    public void insertAllPaths(HashSet<GraphPath> allPaths) {
         PreparedStatement ps;
         String stmt = String.format("INSERT INTO %s.graph_path ( term1_id, term2_id, distance ) VALUES (?,?,?)", this.databaseName);
         for (GraphPath path : allPaths) {
@@ -675,7 +675,7 @@ public class HPODatabaseUtil implements ISystemUtility {
         }
     }
 
-    void insertAllTerm2TermRelationships(HpoDataProvider dataProvider) {
+    public void insertAllTerm2TermRelationships(HpoDataProvider dataProvider) {
         ArrayList<Term> allTerms = new ArrayList<Term>();
         PreparedStatement ps;
         String stmt = String.format("INSERT INTO %s.term2term ( term1_id, term2_id, relationship_type ) VALUES (?,?,?)", this.databaseName);
@@ -701,14 +701,14 @@ public class HPODatabaseUtil implements ISystemUtility {
 
     }
 
-    int insertDisease(String diseaseId, String database, String diseaseName, String diseaseLongName) {
+    public int insertDisease(String diseaseId, String database, String diseaseName, String diseaseLongName) {
         int xrefIdInHpoDb = selectOrInsertExternalObject(diseaseId, database);
         // update the disease entry (specific class)
         updateDiseaseEntry(xrefIdInHpoDb, diseaseName, diseaseLongName);
         return xrefIdInHpoDb;
     }
 
-    int insertAnnotation(int diseaseIdInDatabase, int termid, String evidenceCode, boolean doesNotApply, String frequencyModifier, String annotatedBy, Date annotatedDate) {
+    public int insertAnnotation(int diseaseIdInDatabase, int termid, String evidenceCode, boolean doesNotApply, String frequencyModifier, String annotatedBy, Date annotatedDate) {
         int annotationId = -1;
         PreparedStatement ps;
         String stmt = String.format(
@@ -737,7 +737,7 @@ public class HPODatabaseUtil implements ISystemUtility {
         return annotationId;
     }
 
-    void insertAnnotationOnsetModifier(int annotationId, int termid, String comment) {
+    public void insertAnnotationOnsetModifier(int annotationId, int termid, String comment) {
         PreparedStatement ps;
         String stmt = String.format("INSERT INTO %s.annotation_onset_modifier (annotation_id, onset_term_id, comment) VALUES (?,?,?)", this.databaseName);
         try {

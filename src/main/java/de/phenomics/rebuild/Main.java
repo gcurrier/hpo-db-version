@@ -1,5 +1,7 @@
-package de.phenomics.database;
+package de.phenomics.rebuild;
 
+import de.phenomics.database.GraphPath;
+import de.phenomics.database.HPODatabaseUtil;
 import hpo.Annotation;
 import hpo.HpoDataProvider;
 import hpo.Item;
@@ -13,14 +15,14 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 
-public class RebuildHpoDb {
+public class Main {
 
     /**
      * A program to create a mysql version of the HPO and its annotations.
      *
      * @param args Command line inputs args
      */
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws org.apache.commons.cli.ParseException {
 
         Instant startTime = Instant.now();
 
@@ -47,7 +49,7 @@ public class RebuildHpoDb {
 
         // populate local variables with parameter values
 //        String className = CreateMysqlHPODbVersion.class.getSimpleName();
-        String className = RebuildHpoDb.class.getSimpleName();
+        String className = Main.class.getSimpleName();
         String dbType = getOption(o_dbType, line);
         boolean dbHpoRebuild = line.hasOption("r");
         boolean dbCustomRebuild = line.hasOption("c");
