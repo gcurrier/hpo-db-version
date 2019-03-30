@@ -2,7 +2,7 @@
 
 Uses _javautil_pheno_ and _phenologizer_ from maven [compbio maven repo](library at http://compbio.charite.de/tl_files/maven) to rebuild the HPO database.
 
-##Concept
+## Concept
 Requires 3 files: 
 - the _phenotype_annotations.tab_ file (downloadable [here](http://compbio.charite.de/jenkins/job/hpo.annotations/lastStableBuild/)), 
 - the latest _hp.obo_ file, found [here](http://purl.obolibrary.org/obo/hp.obo) 
@@ -14,7 +14,7 @@ Requires 3 files:
 
 Additionally, more files may be added as needed.
 
-##Technical details
+## Technical details
 The program relies mainly upon a properties file:
 ````
 #OS Properties
@@ -66,7 +66,7 @@ java -jar RebuildHpoDb_0.2.jar -c
 java -jar RebuildHpoDb_0.2.jar -b
 ````
 
-##Installation
+## Installation
 
 Requirements
 
@@ -85,6 +85,6 @@ The output jar will be located under _$project_root/target_
 
 [compbio](http://drseb.github.io/science/cv/) | Original Author | Dr. Sebastian Köhler  [Original hpo-db-version](https://github.com/drseb/hpo-db-version) 
 
-[Medizinisch Genetisches Zentrum, München](https://www.mgz-muenchen.de/startseite.html) | Contributor | Glen Currier | [Contributor Fork](https://github.com/gcurrier/hpo-db-version/tree/mgz-customization)
+[MGZ, München](https://www.mgz-muenchen.de/startseite.html) | Contributor | Glen Currier | [Contributor Fork](https://github.com/gcurrier/hpo-db-version/tree/mgz-customization)
  
  
