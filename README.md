@@ -1,6 +1,6 @@
 # RebuildHpoDb
 
-Uses _javautil_pheno_ and _phenologizer_ from maven [compbio maven repo](library at http://compbio.charite.de/tl_files/maven) to rebuild the HPO database.
+Uses _javautil_pheno_ and _phenologizer_ from [compbio maven repo library](http://compbio.charite.de/tl_files/maven) to rebuild the HPO database.
 
 ## Concept
 Requires 3 files: 
