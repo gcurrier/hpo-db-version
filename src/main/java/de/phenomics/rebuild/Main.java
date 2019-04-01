@@ -115,8 +115,10 @@ public class Main {
         String databaseName = "hpo_" + reportDate;
         String dbSchemaPath = osInDir + "/" + dbSchemafile;
         String outFilePath = osOutDir + "/" + reportDate + "/" + databaseName + ".sql";
+
         //make db connection
         dbUtils.makeConnection(dbHost, dbPort, dbUser, dbPass, databaseName);
+
         String mysqlPath = dbUtils.getMySQLPath();
         //load all variables into paramMap
         paramMap.put("dbHost", dbHost);
